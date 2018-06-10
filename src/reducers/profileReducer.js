@@ -1,15 +1,15 @@
-import { FETCH_GRAPHS } from '../actions/types';
+import { NEW_WEBSITE } from '../actions/types';
 
 const intialState = {
-  target_data: []
+  website_data: []
 }
 
 export default function(state = intialState, action) {
   switch (action.type) {
-    case FETCH_GRAPHS:
+    case NEW_WEBSITE:
       return {
         ...state,
-        target_data: action.payload
+        website_data: action.payload
       }
     default:
       return state;

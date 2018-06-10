@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchGraphs } from '../actions/graphActions';
+import withAuth from '../hocs/withAuth'
 
 class GraphDisplay extends Component {
 
@@ -28,4 +29,4 @@ const mapStateToProps = state => ({
   data: state.data.items
 });
 
-export default connect(mapStateToProps, { fetchGraphs })(GraphDisplay);
+export default withAuth(connect(mapStateToProps, { fetchGraphs })(GraphDisplay));

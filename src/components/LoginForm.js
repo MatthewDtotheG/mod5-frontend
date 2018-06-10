@@ -1,32 +1,69 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as actions from '../actions/loginActions';
+import { withRouter } from 'react-router-dom'
 import '../App.css';
 
 class LoginForm extends Component {
 
-  render() {
-    return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
+    state = {
+        error: false,
+        fields: {
+          email: '',
+          password: ''
+        }
+    }
 
-          <h1>Register</h1>
-          <form>
-            <input type='text' value="first name"/>
-            <br/>
-            <input type='text' value="last name"/>
-            <br/>
-            <input type='text' value="email"/>
-            <br/>
-            <input type='text' value='password'/>
-            <br/>
-            <button>Register</button>
-          </form>
+    handleChange = e => {
+      const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
+      this.setState({ fields: newFields });
+    };
+
+    handleSubmit = e => {
+      e.preventDefault();
+      const { fields: { email, password } } = this.state;
+      this.props.loginUser(email, password, this.props.history);
+    };
+
+    render() {
+      const { fields } = this.state;
+      return (
+        <div>
+          {this.state.error ? <h1>Try Again</h1> : null}
+          <div >
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <label>Username</label>
+                <input
+                  name="email"
+                  placeholder="email"
+                  value={fields.email}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <label>Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                  value={fields.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <button type="submit">
+                Login
+              </button>
+            </form>
+          </div>
         </div>
-    );
-  }
+      );
+    }
 }
 
-export default LoginForm;
+LoginForm.propTypes = {
+    actions: PropTypes.func.isRequired
+};
+
+export default withRouter(connect(null, actions)(LoginForm))

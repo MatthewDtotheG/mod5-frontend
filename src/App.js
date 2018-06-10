@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { Provider } from 'react-redux';
 import Home from './components/Home';
-import LoginForm from './components/LoginForm';
-import store from './store';
+import store from './helpers/store';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 class App extends Component {
 
@@ -12,7 +10,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div>
-          <LoginForm/>
+          <Router><Home/></Router>
         </div>
       </Provider>
     );
