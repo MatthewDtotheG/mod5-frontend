@@ -62,8 +62,5 @@ class LoginForm extends Component {
     }
 }
 
-LoginForm.propTypes = {
-    actions: PropTypes.func.isRequired
-};
 
 export default withRouter(connect(null, actions)(LoginForm))
