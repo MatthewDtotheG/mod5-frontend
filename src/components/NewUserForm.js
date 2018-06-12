@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createUser } from '../actions/formActions';
+import { Route, Link} from 'react-router-dom'
 
 class NewUserForm extends Component {
 
@@ -60,7 +61,9 @@ class NewUserForm extends Component {
               onChange={this.onChange}
               value={this.state.password}/>
             <br/>
-            <input type='submit' onClick={this.onClick} />
+            <button type='submit' component={Link} to="/login" onClick={this.onClick} to='/login'>
+              Create Account
+            </button>
           </form>
         </div>
     );

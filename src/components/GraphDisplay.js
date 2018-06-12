@@ -11,7 +11,7 @@ class GraphDisplay extends Component {
 
   render() {
       const graphItems = this.props.data.map(targetData => (
-        <div key={targetData.id}>
+        <div>
           <h1>{targetData.city}</h1>
         </div>
       ))
@@ -25,8 +25,10 @@ class GraphDisplay extends Component {
 
 }
 
-const mapStateToProps = state => ({
-  data: state.data.items
-});
+const mapStateToProps = state => {
+  return {
+    data: state.target_data.target_data
+  }
+};
 
 export default withAuth(connect(mapStateToProps, { fetchGraphs })(GraphDisplay));
