@@ -1,5 +1,6 @@
 import { NEW_WEBSITE } from './types'
 import { FETCH_WEBSITES } from './types'
+import { WEBSITE_GRAPH } from '../actions/types';
 
 export const createWebsite = (websiteData) => dispatch => {
   let {name, user_id} = websiteData
@@ -27,6 +28,15 @@ export const fetchWebsites = (id) => dispatch => {
     type: FETCH_WEBSITES,
     payload: websiteData
   }));
+}
+
+export const websiteGraph = (id) => dispatch => {
+     fetch(`http://localhost:5000/api/v1/websites/${id}/targets`)
+     .then(resp => resp.json())
+     .then(data => dispatch({
+       type: WEBSITE_GRAPH,
+       payload: data
+     }));
 }
 
 

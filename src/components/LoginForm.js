@@ -28,13 +28,14 @@ class LoginForm extends Component {
 
     render() {
       const { fields } = this.state;
+
       return (
-        <div>
+        <div className='loginContainer'>
           {this.state.error ? <h1>Try Again</h1> : null}
           <div >
             <form onSubmit={this.handleSubmit}>
               <div>
-                <label>Username</label>
+
                 <input
                   name="email"
                   placeholder="email"
@@ -43,7 +44,7 @@ class LoginForm extends Component {
                 />
               </div>
               <div>
-                <label>Password</label>
+
                 <input
                   name="password"
                   type="password"

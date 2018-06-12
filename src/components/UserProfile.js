@@ -12,18 +12,21 @@ class UserProfile extends Component {
     user_id: 0
   }
 
-
   componentWillMount = () => {
     this.props.fetchWebsites(this.props.auth.currentUser.id)
   }
 
-  onClick = (e) => {
+  handleClick = (e) => {
       e.preventDefault();
       const websiteData = {
         name: this.state.name,
         user_id: parseInt(e.target.id)
       }
       this.props.createWebsite(websiteData);
+    }
+
+    passID = (id) => {
+      this.props.websiteGraph(id)
     }
 
   onChange = (e) => {
@@ -33,9 +36,13 @@ class UserProfile extends Component {
 
   renderWebsite = () => {
       return this.props.allWebsites.map(data => (
-        <div>
+        <div >
           <h1>{data.name}</h1>
-          <Link to='/graph'>Graph Page</Link>
+
+          <Link onClick={() => this.passID(data.id)} to='/graph'>
+            <button>Graph Page</button>
+          </Link>
+
           <figure>
             <pre>
             {`
@@ -59,14 +66,13 @@ class UserProfile extends Component {
     let {email, id} = this.props.auth.currentUser
 
     return (
-        <div className="App">
+        <div className='profileContainer'>
             <h1>hi {email}</h1>
             <form>
               <input type='text' name='name' onChange={this.onChange} value={this.state.name}/>
-              <input type='submit' id={id} onClick={this.onClick} value='Generate Script'/>
+              <button type='submit' id={id} onClick={this.handleClick} value='Generate Script'>Generate Script</button>
             </form>
-
-                {this.renderWebsite()}
+              {this.renderWebsite()}
         </div>
     );
   }

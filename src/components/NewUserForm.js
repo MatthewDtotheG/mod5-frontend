@@ -30,7 +30,7 @@ class NewUserForm extends Component {
 
   render() {
     return (
-        <div className="App">
+        <div className="createContainer">
           <h1>Create Account</h1>
           <form>
             <label>First Name</label>
@@ -61,9 +61,9 @@ class NewUserForm extends Component {
               onChange={this.onChange}
               value={this.state.password}/>
             <br/>
-            <button type='submit' component={Link} to="/login" onClick={this.onClick} to='/login'>
-              Create Account
-            </button>
+              <Link to='/login'>
+                <button type='submit' onClick={this.onClick}>Create Account</button>
+              </Link>
           </form>
         </div>
     );
