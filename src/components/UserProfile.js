@@ -68,10 +68,14 @@ class UserProfile extends Component {
     return (
         <div className='profileContainer'>
             <h1>hi {email}</h1>
+              <br/>
+              <br/>
             <form>
-              <input type='text' name='name' onChange={this.onChange} value={this.state.name}/>
+              <input placeholder='new website name' type='text' name='name' onChange={this.onChange} value={this.state.name}/>
               <button type='submit' id={id} onClick={this.handleClick} value='Generate Script'>Generate Script</button>
             </form>
+            <br/>
+            <br/>
               {this.renderWebsite()}
         </div>
     );
