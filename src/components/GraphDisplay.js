@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom"
 import { connect } from 'react-redux';
 import * as actions from '../actions/profileActions';
 import withAuth from '../hocs/withAuth';
 import { Grid, Container } from 'semantic-ui-react'
 import {Doughnut} from 'react-chartjs-2';
+import { ComposableMap, ZoomableGroup, Geographies, Geography} from "react-simple-maps"
 
 class GraphDisplay extends Component {
 
@@ -51,7 +53,8 @@ const data = {
 
 mobileGraph = () => {
   let mobileTypes = this.props.websiteData.map(data => {
-    delete data.mobile['null']
+    delete data.mobile['null'];
+    delete data.mobile['false'];
     return Object.keys(data.mobile)
   })[0]
   let mobileCount = this.props.websiteData.map(data => {
@@ -135,10 +138,33 @@ const data = {
     )
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   render() {
       console.log(this.props.websiteData);
       console.log(this.props.newWebsite)
       return(
+    <div>
       <Container textAlign='center' className='graphContainer'>
         <Grid container='true' stackable='true'>
           <Grid.Row columns={2}>
@@ -159,6 +185,23 @@ const data = {
           </Grid.Row>
         </Grid>
       </Container>
+
+
+        <ComposableMap>
+          <ZoomableGroup>
+            <Geographies geography={ "../topojson-maps/world-50m.json" }>
+              {(geographies, projection) => geographies.map(geography => (
+                <Geography
+                  key={ geography.id }
+                  geography={ geography }
+                  projection={ projection }
+                  />
+              ))}
+            </Geographies>
+          </ZoomableGroup>
+        </ComposableMap>
+      </div>
+
       )
   }
 }

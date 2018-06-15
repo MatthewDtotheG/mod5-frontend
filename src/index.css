@@ -30,11 +30,19 @@ a {
   display: inline-block;
 }
 
+figure {
+  margin-bottom: 80px;
+
+}
+
 pre {
-  text-align: center;
-  background-color: white;
+  text-align: left;
+  background-color: #f1f1f1;
   width: 100%;
   overflow: hidden;
+  border: 1px solid #1C71FB ;
+  border-radius: 5px;
+  color: #1C71FB;
 }
 
 input {
@@ -68,6 +76,23 @@ button:hover {
 
 .test {
   text-align: center;
+}
+
+.websiteContainer {
+  margin-top: 10%;
+}
+
+.graphButton {
+  display: inline-block;
+  float: right;
+  margin-right: 5%;
+  margin-bottom: 30px;
+}
+
+.websiteName {
+  margin-left: 5%;
+  display: inline-block;
+  float: left;
 }
 
 
