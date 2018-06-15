@@ -2,47 +2,163 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/profileActions';
 import withAuth from '../hocs/withAuth';
-import {Bar} from 'react-chartjs-2';
+import { Grid, Container } from 'semantic-ui-react'
+import {Doughnut} from 'react-chartjs-2';
 
 class GraphDisplay extends Component {
 
+testFunc = () => {
+  this.props.websiteData.map(data => console.log(data))
+}
 
-  // make functions that incriment a state for each peice of information that I want to show
-  //
+
+componentDidMount = () => {
+  this.props.websiteGraph(1)
+}
+
+// testStuff = () => {
+//   let browserCount = this.props.websiteData.map(data => {
+//     return Object.values(data.browser)
+//   })[0]
+//
+//
+// }
+
+browserGraph = () => {
+  let browsers = this.props.websiteData.map(data => {
+      return Object.keys(data.browser)
+    })[0]
+  let browserCount = this.props.websiteData.map(data => {
+    return Object.values(data.browser)
+  })[0]
+
+const data = {
+	labels: browsers,
+	datasets: [{
+		data: browserCount,
+		backgroundColor: [ '#FF6384', '#36A2EB','#FFCE56' ],
+		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+	}]
+};
+    return (
+      <div>
+        <h2>Browsers</h2>
+        <Doughnut data={data} />
+      </div>
+    )
+}
 
 
-  BarGraph = () => {
-    const data = {
-    labels: ['mobile', 'laptop', 'desktop'],
-    datasets: [
-        {
-          label: 'Device Type Data',
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
-          borderWidth: 1,
-          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-          hoverBorderColor: 'rgba(255,99,132,1)',
-          data: [80, 59, 40]
-        }
-      ]
-    };
+mobileGraph = () => {
+  let mobileTypes = this.props.websiteData.map(data => {
+    delete data.mobile['null']
+    return Object.keys(data.mobile)
+  })[0]
+  let mobileCount = this.props.websiteData.map(data => {
+    return Object.values(data.mobile)
+  })[0]
+
+const data = {
+	labels: mobileTypes,
+	datasets: [{
+		data: mobileCount,
+		backgroundColor: ['#FF6384','#36A2EB', '#FFCE56'],
+		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+	}]
+};
 
     return (
-      <Bar data={data}/>
+      <div>
+        <h2>Mobile Devices</h2>
+        <Doughnut data={data} />
+      </div>
     )
-  }
+}
+
+ispGraph = () => {
+  let ispTypes = this.props.websiteData.map(data => {
+    delete data.isp['null']
+    return Object.keys(data.isp)
+  })[0]
+  let ispCount = this.props.websiteData.map(data => {
+    return Object.values(data.isp)
+  })[0]
+
+const data = {
+	labels: ispTypes,
+	datasets: [{
+		data: ispCount,
+		backgroundColor: ['#FF6384','#36A2EB', '#FFCE56'],
+		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+	}]
+};
+
+    return (
+      <div>
+        <h2>ISPs</h2>
+        <Doughnut data={data} />
+      </div>
+    )
+}
 
 
-  // renderTargetData = () => {
-  //     this.props.websiteData.map(data => console.log(data.browser))
-  // }
+deviceGraph = () => {
+  let laptop = this.props.websiteData.map(data => {
+    delete data.laptop['false']
+    return Object.values(data.laptop)
+  })[0]
+
+  let desktop = this.props.websiteData.map(data => {
+    delete data.desktop['false']
+    return Object.values(data.desktop)
+  })[0]
+
+  let mobileCountSum = this.props.websiteData.map(data => {
+    const add = (a, b) => a + b
+    return Object.values(data.mobile).reduce(add)
+  })[0]
+
+const data = {
+	labels:['laptop','mobile','desktop'],
+	datasets: [{
+		data: [ laptop, mobileCountSum, desktop],
+		backgroundColor: ['#FF6384','#36A2EB','#FFCE56'],
+		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+	}]
+};
+
+    return (
+       <div>
+         <h2>Devices</h2>
+         <Doughnut data={data} />
+       </div>
+    )
+}
 
   render() {
-    console.log(this.props.websiteData)
+      console.log(this.props.websiteData);
+      console.log(this.props.newWebsite)
       return(
-        <div className="graphContainer">
-          {this.BarGraph()}
-        </div>
+      <Container textAlign='center' className='graphContainer'>
+        <Grid container='true' stackable='true'>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              {this.browserGraph()}
+            </Grid.Column>
+            <Grid.Column>
+              {this.mobileGraph()}
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              {this.deviceGraph()}
+            </Grid.Column>
+            <Grid.Column>
+              {this.ispGraph()}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
       )
   }
 }
@@ -50,7 +166,8 @@ class GraphDisplay extends Component {
 
 const mapStateToProps = state => {
   return {
-    websiteData: state.website_data.website_target_data
+    websiteData: state.website_data.website_target_data,
+    newWebsite: state.website_data.new_website_data
   }
 };
 

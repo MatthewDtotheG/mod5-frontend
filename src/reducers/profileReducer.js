@@ -15,15 +15,15 @@ export default function(state = intialState, action) {
         new_website_data: action.payload
       }
     case FETCH_WEBSITES:
-        return {
-          ...state,
-          user_website_data: action.payload
-        }
+      return {
+        ...state,
+        user_website_data: action.payload
+      }
     case WEBSITE_GRAPH:
-        return {
-          ...state,
-          website_target_data: action.payload
-        }
+      return {
+        ...state,
+        website_target_data: action.payload
+      }
     default:
       return state;
   }

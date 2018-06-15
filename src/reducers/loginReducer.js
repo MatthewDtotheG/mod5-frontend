@@ -1,5 +1,9 @@
 
-const initialState = { };
+const initialState = {
+  currentUser: {
+    id: undefined
+  }
+};
 
 export default function(state = initialState, action){
   switch (action.type) {

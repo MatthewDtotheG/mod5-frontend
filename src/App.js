@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
@@ -18,21 +17,18 @@ class App extends Component {
       <Provider store={store}>
         <div>
           <header>
-
           </header>
-
-          <Switch>
+        <Switch>
             < Route path="/" exact component={ Home }/>
             < Route path='/login' component={ LoginForm } />
             < Route path='/create' component={ NewUserForm } />
             < Route path='/profile' component={ UserProfile } />
             < Route path='/graph' component={ GraphDisplay } />
-          </Switch>
-
-        </div>
-      </Provider>
+        </Switch>
+      </div>
+  </Provider>
     );
   }
 }
 
-export default App;
+export default App

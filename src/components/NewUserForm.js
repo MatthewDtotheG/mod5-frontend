@@ -14,7 +14,7 @@ class NewUserForm extends Component {
     };
 
   onClick = (e) => {
-    e.preventDefault();
+    e.stopPropagation()
     const userData = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,

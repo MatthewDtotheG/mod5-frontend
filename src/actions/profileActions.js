@@ -4,7 +4,6 @@ import { WEBSITE_GRAPH } from '../actions/types';
 
 export const createWebsite = (websiteData) => dispatch => {
   let {name, user_id} = websiteData
-
   fetch(`http://localhost:5000/api/v1/websites/`, {
        method: "POST",
        headers: {
