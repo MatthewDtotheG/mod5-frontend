@@ -9,22 +9,11 @@ import { ComposableMap, ZoomableGroup, Geographies, Geography} from "react-simpl
 
 class GraphDisplay extends Component {
 
-testFunc = () => {
-  this.props.websiteData.map(data => console.log(data))
-}
-
 
 componentDidMount = () => {
   this.props.websiteGraph(1)
+  this.props.singleWebsite(1)
 }
-
-// testStuff = () => {
-//   let browserCount = this.props.websiteData.map(data => {
-//     return Object.values(data.browser)
-//   })[0]
-//
-//
-// }
 
 browserGraph = () => {
   let browsers = this.props.websiteData.map(data => {
@@ -138,34 +127,12 @@ const data = {
     )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  render() {
-      console.log(this.props.websiteData);
-      console.log(this.props.newWebsite)
+render() {
+    console.log(this.props.websiteData);
       return(
-    <div>
-      <Container textAlign='center' className='graphContainer'>
+    <div className='mainContainer'>
+      <h1>{this.props.currentSite.name}</h1>
+      <Container textAlign='center' >
         <Grid container='true' stackable='true'>
           <Grid.Row columns={2}>
             <Grid.Column>
@@ -200,6 +167,7 @@ const data = {
             </Geographies>
           </ZoomableGroup>
         </ComposableMap>
+
       </div>
 
       )
@@ -210,6 +178,7 @@ const data = {
 const mapStateToProps = state => {
   return {
     websiteData: state.website_data.website_target_data,
+    currentSite: state.website_data.single_website_data,
     newWebsite: state.website_data.new_website_data
   }
 };

@@ -31,10 +31,9 @@ class LoginForm extends Component {
       return (
         <div className='loginContainer'>
           {this.state.error ? <h1>Try Again</h1> : null}
-          <div >
+            <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
               <div>
-
                 <input
                   name="email"
                   placeholder="email"
@@ -47,6 +46,7 @@ class LoginForm extends Component {
                 <input
                   name="password"
                   type="password"
+                  className='password'
                   placeholder="password"
                   value={fields.password}
                   onChange={this.handleChange}
@@ -56,7 +56,6 @@ class LoginForm extends Component {
                 Login
               </button>
             </form>
-          </div>
         </div>
       );
     }

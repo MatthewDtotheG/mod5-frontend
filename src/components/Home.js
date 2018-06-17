@@ -17,7 +17,7 @@ class Home extends Component {
               <br></br>
               <br></br>
               <Link className='link' to='/login'>
-                <button >Login</button>
+                <button>Login</button>
               </Link>
         </div>
       );

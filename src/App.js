@@ -15,9 +15,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
-          <header>
-          </header>
+        <div className='appContainer'>
         <Switch>
             < Route path="/" exact component={ Home }/>
             < Route path='/login' component={ LoginForm } />
@@ -25,8 +23,8 @@ class App extends Component {
             < Route path='/profile' component={ UserProfile } />
             < Route path='/graph' component={ GraphDisplay } />
         </Switch>
-      </div>
-  </Provider>
+        </div>
+      </Provider>
     );
   }
 }

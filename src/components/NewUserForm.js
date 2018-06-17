@@ -33,7 +33,6 @@ class NewUserForm extends Component {
         <div className="createContainer">
           <h1>Create Account</h1>
           <form>
-
             <input
               type='text'
               name='first_name'
@@ -59,7 +58,7 @@ class NewUserForm extends Component {
             <br/>
 
             <input
-              type='text'
+              type='password'
               name='password'
               placeholder="password"
               onChange={this.onChange}
