@@ -91,3 +91,169 @@
 //     `}
 //   </pre>
 // </figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { connect } from 'react-redux';
+// import world from '../maps/world-50m.json'
+// import {
+//   ComposableMap,
+//   ZoomableGroup,
+//   Geographies,
+//   Geography,
+//   Markers,
+//   Marker,
+// } from "react-simple-maps"
+//
+// const wrapperStyles = {
+//   width: "100%",
+//   maxWidth: 980,
+//   margin: "0 auto",
+// }
+//
+// class ZoomPan extends Component {
+//
+// state = {
+//       center: [0,20],
+//       zoom: 1,
+//       cities: [
+//         {coordinates: [8.5417,47.3769]},
+//         {coordinates: [103.8198,1.3521]},
+//         {coordinates: [-122.4194,37.7749]},
+//         {coordinates: [151.2093,-33.8688]},
+//         {coordinates: [3.3792,6.5244]},
+//         {coordinates: [-58.3816,-34.6037]},
+//         {coordinates: [121.4737,31.2304]},
+//         {coordinates: [-0.1278, 51.5074]},
+//         {coordinates: [-74.0060,40.7128]}
+//       ]
+//   }
+//
+//
+//   handleCitySelection = (evt) => {
+//     const cityId = evt.target.getAttribute("data-city")
+//     const city = this.state.cities[cityId]
+//     this.setState({
+//       center: city.coordinates,
+//       zoom: 2,
+//     })
+//   }
+//
+//   handleReset = () => {
+//     this.setState({
+//       center: [0,20],
+//       zoom: 1,
+//     })
+//   }
+//
+//
+//   locationData = () => {
+//
+//     let newArr = []
+//     let test = []
+//     let latitude = []
+//     let longitude = []
+//     let stuff = this.props.websiteData.map(data => {
+//         latitude = Object.keys(data.latitude)
+//         longitude = Object.keys(data.longitude)
+//       })[0]
+//
+//       for(let i = 0; i < latitude.length; i++) {
+//         newArr.push(longitude[i])
+//         newArr.push(latitude[i])
+//       }
+//
+//       while (newArr.length > 0) {
+//         test = newArr.splice(0,2)
+//         console.log(test)
+//
+//         // this.setState({
+//         //   cities: {...this.state.coordinates, test}
+//         // })
+//       }
+//
+//   }
+//
+//
+//
+//   render() {
+//     this.locationData()
+//
+//     return (
+//       <div>
+//         <div style={wrapperStyles}>
+//           <ComposableMap
+//             projectionConfig={{
+//               scale: 220,
+//             }}
+//             width={980}
+//             height={551}
+//             style={{
+//               width: "100%",
+//               height: "auto",
+//             }}
+//             >
+//             <ZoomableGroup center={this.state.center} zoom={this.state.zoom}>
+//               <Geographies geography={world}>
+//                 {(geographies, projection) => geographies.map((geography, i) => geography.id !== "ATA" && (
+//                   <Geography
+//                     key={i}
+//                     geography={geography}
+//                     projection={projection}
+//                     style={{
+//                       default: {
+//                         fill: "#ECEFF1",
+//                         stroke: "#607D8B",
+//                         strokeWidth: 0.75,
+//                         outline: "none",
+//                       },
+//                       hover: {
+//                         fill: "#607D8B",
+//                         stroke: "#607D8B",
+//                         strokeWidth: 0.75,
+//                         outline: "none",
+//                       },
+//                       pressed: {
+//                         fill: "#FF5722",
+//                         stroke: "#607D8B",
+//                         strokeWidth: 0.75,
+//                         outline: "none",
+//                       },
+//                     }}
+//                   />
+//                 ))}
+//               </Geographies>
+//               <Markers>
+//                 {
+//                   this.state.cities.map((city, i) => (
+//                     <Marker key={i} marker={city}>
+//                       <circle
+//                         cx={0}
+//                         cy={0}
+//                         r={6}
+//                         fill="#1C71FB"
+//                         stroke="#1C71FB"
+//                       />
+//                     </Marker>
+//                   ))
+//                 }
+//               </Markers>
+//             </ZoomableGroup>
+//           </ComposableMap>
+//         </div>
+//       </div>
+//     )
+//   }
+// }

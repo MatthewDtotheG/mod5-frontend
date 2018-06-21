@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import profpic from '../profpic.svg';
 import * as actions from '../actions/profileActions';
-import Fade from 'react-reveal/Fade';
-import withAuth from '../hocs/withAuth';
-import { Link } from 'react-router-dom'
-import { Button, Divider, Image, Transition } from 'semantic-ui-react'
+import withAuth from '../hocs/withAuth'
 
 class UserProfile extends Component {
 
@@ -81,28 +80,28 @@ handleClick = (e) => {
     let {email, id} = this.props.auth.currentUser
     return (
       <div className='mainContainer'>
-        <div className='profileContainer'>
-            <div className='infoContainer'>
-              <img src={profpic} className='profpic'/>
-              <h2>{email}</h2>
-              <Link className='logout' onClick={this.props.logoutUser} to='/'>
-                <button>Logout</button>
-              </Link>
+        <nav>
+            <Link  className='DV' to='/profile'><a>DV</a></Link>
+            <Link className='logout' onClick={this.props.logoutUser} to='/'><a>Logout</a></Link>
+        </nav>
+
+          <div className='generatorContainer'>
+
+              <h1 className='genTitle'>Create Tracking Script</h1>
+              <form className='generator'>
+                <input className='newInput' type='text' name='name' onChange={this.onChange} value={this.state.name}/>
+                <button className='newScript' type='submit' id={id} onClick={this.handleClick}>Generate</button>
+              </form>
+
+          </div>
+            <div className='profileContainer'>
+              <br/>
+              <br/>
+                {this.allWebsites()}
             </div>
-              <div className='BREAK'></div>
-              <br/>
-              <br/>
-          <Fade bottom>
-            <form>
-              <input className='newSite' placeholder='Add Website' type='text' name='name' onChange={this.onChange} value={this.state.name}/>
-              <button className='newScript' type='submit' id={id} onClick={this.handleClick}>Generate Script</button>
-            </form>
-          </Fade>
-            <br/>
-            <br/>
-              {this.allWebsites()}
-        </div>
-      </div>
+
+    </div>
+
     );
   }
 }

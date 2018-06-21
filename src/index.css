@@ -8,26 +8,36 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23000000' stroke-width='1.3'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390  382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%231c71fb'%3E%3Ccircle cx='769' cy='229' r='8'/%3E%3Ccircle cx='539' cy='269' r='8'/%3E%3Ccircle cx='603'   cy='493' r='8'/%3E%3Ccircle cx='731' cy='737' r='8'/%3E%3Ccircle cx='520' cy='660' r='8'/%3E%3Ccircle cx='309' cy='538' r='8'/%3E%3Ccircle cx='295' cy='764' r='8'/%3E%3Ccircle cx='40' cy='599' r='8'/%3E%3Ccircle cx='102' cy='382' r='8'/%3E%3Ccircle cx='127' cy='80' r='8'/%3E%3Ccircle cx='370' cy='105' r='8'/%3E%3Ccircle cx='578' cy='42' r='8'/%3E%3Ccircle cx='237' cy='261' r='8'/%3E%3Ccircle cx='390' cy='382' r='8'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-.homepage, .loginContainer, .createContainer{
+
+.loginContainer, .createContainer{
   margin: auto;
   margin-top: 10%;
   text-align: center;
 }
 
+.createContainer, .loginContainer{
+  margin: auto;
+  padding-top: 10%;
+  padding-bottom: 30%;
+  padding-left: 40px;
+  text-align: left;
+  width: 50%;
+  float: right;
+  height: 100%;
+  background-color: white;
+}
+
 .mainContainer{
   text-align: center;
-  background-color: #f2f2f2;
-  padding-top: 5%;
+  background-color: white;
   height: 100%;
-  max-width: 1100px;
+  max-width: 100%;
   margin: auto;
-  box-shadow: 8px 0 15px -4px grey, -8px 0 8px -4px grey;
 }
 
 .profileContainer {
-
-  text-align: center;
-
+  max-width: 1100px;
+  margin: auto;
   background-image: none;
 }
 
@@ -35,9 +45,15 @@ body {
   display: inline-block;
 }
 
-.logout {
+.link {
   margin-left: 20px;
+  border: none;
 }
+
+.loginDiv {
+  margin-top: 10%;
+}
+
 .title {
   font-size: 50px;
 }
@@ -60,12 +76,49 @@ h3 {
   padding-top: 100px;
 }
 
+nav {
+  max-width: 990px;
+  margin: auto;
+  height: 60px;
+  background-color: white;
+  width: 100%;
+  color: black;
+  text-align: left;
+}
+
+nav a {
+  color: black;
+  font-size: 18px;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: black;
+}
+
+.DV {
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+}
+
+.logout {
+  float: right;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+}
+
+.logout:hover, .DV:hover {
+  border-bottom: 1px solid #1C71FB;
+  color: black;
+  transition: 0.8s;
+}
 footer {
   height: 200px;
-  background-color: #323232;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+  background-color: black;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 figure {
@@ -74,12 +127,19 @@ figure {
 
 pre {
   text-align: left;
-  background-color: white;
+  background-color: #e1e1e1;
   width: 100%;
   overflow: hidden;
-  border: 1px solid #1C71FB ;
+  border: white;
   border-radius: 5px;
   color: #1C71FB;
+}
+
+pre:hover {
+  transition: 0.8s;
+  color: black;
+  border: 1px solid #1C71FB;
+  background-color: white;
 }
 
 form {
@@ -87,21 +147,44 @@ form {
 }
 
 input {
-  background-color: white;
-  margin-bottom: 20px;
-  border-color: #1C71FB;
-  font-size: 20px;
-  height: 60px;
-  width: 200px;
   border-radius: 5px;
-  text-align: center;
+  border: none;
+  background-color: #e1e1e1;
+  width: 400px;
+  height: 40px;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.newInput, .password {
+  border: none;
+  background-color: #e1e1e1;
+  width: 400px;
+  height: 40px;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 10px;
+  /* #fafafa
+  #171718 */
+}
+
+input:hover {
+  transition: 0.8s;
+  border: 1px solid #1C71FB;
+  background-color: white;
+}
+
+.login {
+  font-size: 30px;
+  margin-bottom: 40px;
 }
 
 button {
   background-color: #1C71FB;
-  font-size: 20px;
-  height: 60px;
-  width: 200px;
+  font-size: 16px;
+  height: 40px;
+  width: 100px;
   color: white;
   border-radius: 5px;
   display: inline-block;
@@ -115,45 +198,140 @@ button:hover {
   color: #1C71FB;
 }
 
-.infoContainer {
-  float: left;
-  margin-left: 3%;
-}
-
-.profpic {
-  height: 100px;
-  width: 100px;
+.BREAK2 {
+  height: 150px;
+  width: 100%;
 }
 
 .BREAK {
   height: 250px;
   width: 100%;
   margin: 50px;
-
 }
 
 .test {
   text-align: center;
 }
 
+.generatorContainer {
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23000000' stroke-width='1.3'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390  382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%231c71fb'%3E%3Ccircle cx='769' cy='229' r='8'/%3E%3Ccircle cx='539' cy='269' r='8'/%3E%3Ccircle cx='603'   cy='493' r='8'/%3E%3Ccircle cx='731' cy='737' r='8'/%3E%3Ccircle cx='520' cy='660' r='8'/%3E%3Ccircle cx='309' cy='538' r='8'/%3E%3Ccircle cx='295' cy='764' r='8'/%3E%3Ccircle cx='40' cy='599' r='8'/%3E%3Ccircle cx='102' cy='382' r='8'/%3E%3Ccircle cx='127' cy='80' r='8'/%3E%3Ccircle cx='370' cy='105' r='8'/%3E%3Ccircle cx='578' cy='42' r='8'/%3E%3Ccircle cx='237' cy='261' r='8'/%3E%3Ccircle cx='390' cy='382' r='8'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.genTitle {
+  font-size: 30px;
+  padding-top: 5%;
+}
+
+.generator {
+  padding-top: 0px;
+}
+
 .websiteContainer {
   margin-top: 10%;
 }
 
-.graphButton, .newScript {
+.graphButton button {
   display: inline-block;
-  float: right;
-  margin-right: 5%;
-  margin-bottom: 30px;
+  margin-left: 50px;
+  height: 40px;
+  width: 150px;
 }
 
-.websiteName, .newSite {
-  margin-left: 5%;
+.siteName {
+  margin-top: 100px;
+}
+
+.newScript {
+  margin-left: 20px;
+  margin-bottom: 30px;
+  height: 40px;
+  width: 150px;
+}
+
+
+.websiteName{
+  padding-top: 20px;
   display: inline-block;
-  float: left;
 }
 
 
 /* robin hood green #30CD9A
   blue #1C71FB
  */
+
+
+ /* MAP STYLES =========================================================== */
+
+ .names {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  }
+
+    /* Tooltip CSS */
+    .d3-tip {
+    line-height: 1.5;
+    font-weight: 400;
+    font-family:"avenir next", Arial, sans-serif;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFA500;
+    border-radius: 1px;
+    pointer-events: none;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 8px;
+      width: 100%;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      pointer-events: none;
+
+    }
+
+    /* Northward tooltips */
+    .d3-tip.n:after {
+      content: "\25BC";
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+      text-align: center;
+    }
+
+    /* Eastward tooltips */
+    .d3-tip.e:after {
+      content: "\25C0";
+      margin: -4px 0 0 0;
+      top: 50%;
+      left: -8px;
+    }
+
+    /* Southward tooltips */
+    .d3-tip.s:after {
+      content: "\25B2";
+      margin: 0 0 1px 0;
+      top: -8px;
+      left: 0;
+      text-align: center;
+    }
+
+    /* Westward tooltips */
+    .d3-tip.w:after {
+      content: "\25B6";
+      margin: -4px 0 0 -1px;
+      top: 50%;
+      left: 100%;
+    }
+
+/*    text{
+      pointer-events:none;
+    }*/
+
+    .details{
+      color:white;
+    }

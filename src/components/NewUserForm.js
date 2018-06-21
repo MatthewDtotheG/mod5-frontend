@@ -31,41 +31,55 @@ class NewUserForm extends Component {
   render() {
     return (
         <div className="createContainer">
-          <h1>Create Account</h1>
+          <h1 className='login'>Sign Up</h1>
           <form>
+            <label>First name</label>
+            <br/>
+            <br/>
             <input
               type='text'
               name='first_name'
-              placeholder="First name"
+              className='newInput'
               onChange={this.onChange}
               value={this.state.first_name}/>
-            <br/>
-
+              <br/>
+              <br></br>
+                <label>Last name</label>
+              <br/>
+              <br/>
             <input
               type='text'
               name='last_name'
-              placeholder="Last name"
+              className='newInput'
               onChange={this.onChange}
               value={this.state.last_name}/>
-            <br/>
-
+              <br/>
+              <br></br>
+                <label>Email</label>
+              <br/>
+              <br/>
             <input
               type='text'
               name='email'
-              placeholder="email"
+              className='newInput'
               onChange={this.onChange}
               value={this.state.email}/>
             <br/>
-
+            <br></br>
+              <label>Password</label>
+            <br/>
+            <br></br>
             <input
               type='password'
               name='password'
-              placeholder="password"
+              className='newInput'
               onChange={this.onChange}
               value={this.state.password}/>
             <br/>
+              <br></br>
+              
               <Link type='submit' onClick={this.onClick} to='/login'>
-                <button>Create Account</button>
+                <button>Continue</button>
               </Link>
           </form>
         </div>

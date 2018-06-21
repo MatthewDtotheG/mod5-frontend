@@ -17,7 +17,7 @@ class App extends Component {
       <Provider store={store}>
         <div className='appContainer'>
         <Switch>
-            < Route path="/" exact component={ Home }/>
+            < Route path="/" exact component={ LoginForm }/>
             < Route path='/login' component={ LoginForm } />
             < Route path='/create' component={ NewUserForm } />
             < Route path='/profile' component={ UserProfile } />

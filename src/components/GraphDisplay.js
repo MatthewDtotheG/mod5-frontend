@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom"
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions/profileActions';
 import withAuth from '../hocs/withAuth';
+import WorldMap from './WorldMap';
 import { Grid, Container } from 'semantic-ui-react'
 import {Doughnut} from 'react-chartjs-2';
-import { ComposableMap, ZoomableGroup, Geographies, Geography} from "react-simple-maps"
 
 class GraphDisplay extends Component {
-
 
 componentDidMount = () => {
   this.props.websiteGraph(1)
@@ -27,8 +26,8 @@ const data = {
 	labels: browsers,
 	datasets: [{
 		data: browserCount,
-		backgroundColor: [ '#FF6384', '#36A2EB','#FFCE56' ],
-		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+		backgroundColor: [ '#090C9B', '#3D52D5','#B4C5E4' ],
+		hoverBackgroundColor: ['#090C9B','#3D52D5','#B4C5E4']
 	}]
 };
     return (
@@ -38,7 +37,6 @@ const data = {
       </div>
     )
 }
-
 
 mobileGraph = () => {
   let mobileTypes = this.props.websiteData.map(data => {
@@ -54,8 +52,8 @@ const data = {
 	labels: mobileTypes,
 	datasets: [{
 		data: mobileCount,
-		backgroundColor: ['#FF6384','#36A2EB', '#FFCE56'],
-		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+		backgroundColor: ['#721121','#A5402D', '#FFCE56'],
+		hoverBackgroundColor: ['#721121','#A5402D','#FFCE56']
 	}]
 };
 
@@ -80,8 +78,8 @@ const data = {
 	labels: ispTypes,
 	datasets: [{
 		data: ispCount,
-		backgroundColor: ['#FF6384','#36A2EB', '#FFCE56'],
-		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+		backgroundColor: ['#53A548','#36A2EB', '#FFCE56'],
+		hoverBackgroundColor: ['#53A548','#36A2EB','#FFCE56']
 	}]
 };
 
@@ -114,8 +112,8 @@ const data = {
 	labels:['laptop','mobile','desktop'],
 	datasets: [{
 		data: [ laptop, mobileCountSum, desktop],
-		backgroundColor: ['#FF6384','#36A2EB','#FFCE56'],
-		hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56']
+		backgroundColor: ['#4F5D75','#BFC0C0','#EF8354'],
+		hoverBackgroundColor: ['#4F5D75','#BFC0C0','#EF8354']
 	}]
 };
 
@@ -128,9 +126,14 @@ const data = {
 }
 
 render() {
-    console.log(this.props.websiteData);
-      return(
+    return(
     <div className='mainContainer'>
+      <nav>
+          <Link  className='DV' to='/profile'><a>DV</a></Link>
+          <Link className='logout' onClick={this.props.logoutUser} to='/'><a>Logout</a></Link>
+      </nav>
+      <div className='BREAK2'></div>
+      <div className='profileContainer'>
       <h1>{this.props.currentSite.name}</h1>
       <Container textAlign='center' >
         <Grid container='true' stackable='true'>
@@ -153,34 +156,22 @@ render() {
         </Grid>
       </Container>
 
-
-        <ComposableMap>
-          <ZoomableGroup>
-            <Geographies geography={ "../topojson-maps/world-50m.json" }>
-              {(geographies, projection) => geographies.map(geography => (
-                <Geography
-                  key={ geography.id }
-                  geography={ geography }
-                  projection={ projection }
-                  />
-              ))}
-            </Geographies>
-          </ZoomableGroup>
-        </ComposableMap>
-
-      </div>
-
+      <div className='BREAK2'></div>
+      <h1>Target Map</h1>
+      <WorldMap websiteData={this.props.websiteData}/>
+      <div className='BREAK2'></div>
+    </div>
+  </div>
       )
   }
 }
 
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
     websiteData: state.website_data.website_target_data,
     currentSite: state.website_data.single_website_data,
     newWebsite: state.website_data.new_website_data
   }
-};
+);
 
 export default withAuth(connect(mapStateToProps, actions)(GraphDisplay));
