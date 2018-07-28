@@ -1,0 +1,28 @@
+{
+  "name": "mod5-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "chart.js": "^2.7.2",
+    "react": "^16.4.1",
+    "react-chartjs-2": "^2.7.2",
+    "react-d3-map": "^0.8.3",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-reveal": "^1.2.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-simple-maps": "^0.12.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui": "^2.3.1",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.81.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
